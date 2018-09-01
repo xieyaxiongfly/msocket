@@ -97,7 +97,7 @@ void mexFunction(int nlhs, mxArray *plhs[],
 		if(FD_ISSET(sock,&readfds)==0) {
 			plhs[0] = mxCreateNumericMatrix(0,0,mxCHAR_CLASS,mxREAL);
 			if(nlhs > 1)
-				plhs[1] = mxCreateScalarDouble(-1.0f);
+				plhs[1] = mxCreateDoubleScalar(-1.0f);
 			return;
 			mxFree(cdata);
 		}
@@ -106,14 +106,14 @@ void mexFunction(int nlhs, mxArray *plhs[],
 		if(ret == -1) {
 			cdata[0] = '\0';
 			if(nlhs > 1)
-				plhs[1] = mxCreateScalarDouble(-1.0);
+				plhs[1] = mxCreateDoubleScalar(-1.0);
 			return;
 		}
 		cnt += ret;
 	} /* end of while */
 	
 	if(nlhs > 1)
-		plhs[1] = mxCreateScalarDouble(0.0);
+		plhs[1] = mxCreateDoubleScalar(0.0);
 		
 	return;
 } /* end of mexFunction */

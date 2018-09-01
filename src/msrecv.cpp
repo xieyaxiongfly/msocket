@@ -95,7 +95,7 @@ void mexFunction(int nlhs, mxArray *plhs[],
 	if(FD_ISSET(sock,&readfds)==0) {
 		plhs[0] = mxCreateNumericMatrix(0,0,mxDOUBLE_CLASS,mxREAL);
 		if(nlhs > 1)
-			plhs[1] = mxCreateScalarDouble(-1.0f);
+			plhs[1] = mxCreateDoubleScalar(-1.0f);
 		return;
 	}
 
@@ -109,7 +109,7 @@ void mexFunction(int nlhs, mxArray *plhs[],
 			perror("recv");
 			plhs[0] = mxCreateNumericMatrix(0,0,mxDOUBLE_CLASS,mxREAL);
 			if(nlhs > 1)
-				plhs[1] = mxCreateScalarDouble(-1.0f);
+				plhs[1] = mxCreateDoubleScalar(-1.0f);
 			return;
 		}
 		cnt += ret;
@@ -123,7 +123,7 @@ void mexFunction(int nlhs, mxArray *plhs[],
 	if(recvlen <= 0) {
 		plhs[0] = mxCreateNumericMatrix(0,0,mxDOUBLE_CLASS,mxREAL);
 		if(nlhs > 1)
-			plhs[1] = mxCreateScalarDouble(-1.0);
+			plhs[1] = mxCreateDoubleScalar(-1.0);
 		return;
 	}
 	// Receive the array
@@ -136,7 +136,7 @@ void mexFunction(int nlhs, mxArray *plhs[],
 			perror("recv");
 			plhs[0] = mxCreateNumericMatrix(0,0,mxDOUBLE_CLASS,mxREAL);
 			if(nlhs > 1)
-				plhs[1] = mxCreateScalarDouble(-1.0);
+				plhs[1] = mxCreateDoubleScalar(-1.0);
 			return;
 		}
 		cnt += ret;
@@ -145,7 +145,7 @@ void mexFunction(int nlhs, mxArray *plhs[],
 	mv.create((void *)cdata);
 	plhs[0] = mv.get_mxarray();
 	if(nlhs > 1)
-		plhs[1] = mxCreateScalarDouble(0.0);
+		plhs[1] = mxCreateDoubleScalar(0.0);
 	if(cdata) delete[] cdata;
 		
 	return;
